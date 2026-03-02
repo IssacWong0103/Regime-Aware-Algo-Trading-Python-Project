@@ -1,0 +1,9 @@
+yfinance
+pandas
+numpy
+pyarrow
+plotly
+pandas-ta-openbb
+matplotlib
+mplfinance
+seaborn
