@@ -52,24 +52,24 @@ mpf.plot(df, type='candle', style='yahoo', ax=ax, volume=False,
 
 #ax.plot(df.index, df['bb_upper'], color='gray', lw=1, alpha=0.7, label='BB Upper')
 #ax.plot(df.index, df['bb_lower'], color='gray', lw=1, alpha=0.7, label='BB Lower')
-ax.plot(df.index, df['sma20'], color='#ff7f0e', lw=1, label='SMA 50') #orange
-ax.plot(df.index, df['sma50'], color='#1f77b4', lw=1.5, label='SMA 50')         
-ax.plot(df.index, df['sma200'], color='#2ca02c', lw=1.5, label='SMA 200')       #green
-ax.plot(df.index, df['Close'], color='black', lw=1.5, label='Close' ),          #blue
+ax.plot(df.index, df['sma20'], color='#404040', lw=1, label='SMA 20') 
+ax.plot(df.index, df['sma50'], color='#ff7f0e', lw=1.5, label='SMA 50')         
+ax.plot(df.index, df['sma200'], color='#2ca02c', lw=1.5, label='SMA 200')       
+ax.plot(df.index, df['Close'], color='#1f77b4', lw=1.5, label='Close' ),         
 
 # Bollinger Bands area fill + faint edges
 ax.fill_between(
     df.index,
     df['bb_upper'],
     df['bb_lower'],
-    color='#ff7f0e',
+    color='#404040',
     alpha=0.10,
     zorder=1,
     label='Bollinger Band (±2σ)'
 )
 
-ax.plot(df.index, df['bb_upper'], color='#ff7f0e', lw=0.9, alpha=0.6, zorder=2)
-ax.plot(df.index, df['bb_lower'], color='#ff7f0e', lw=0.9, alpha=0.6, zorder=2)
+ax.plot(df.index, df['bb_upper'], color='#404040', lw=0.9, alpha=0.6, zorder=2)
+ax.plot(df.index, df['bb_lower'], color='#404040', lw=0.9, alpha=0.6, zorder=2)
 
 ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
 ax.xaxis.set_major_locator(mdates.AutoDateLocator())
