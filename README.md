@@ -1,4 +1,9 @@
 # Regime-Switching Hybrid Trading System
+
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
+![Pandas](https://img.shields.io/badge/pandas-2.x-orange)
+![Backtesting](https://img.shields.io/badge/Backtesting-Event--driven-green)
+
 **Mean-Reversion + Trend-Following on Hourly SBUX Data**
 
 An algorithmic trading project in Python that switches between mean-reversion and trend-following strategies based on ADX regime detection.
@@ -14,13 +19,18 @@ This project implements a **regime-aware hybrid trading framework** that dynamic
 - **Mean Reversion** — in range-bound (low ADX) markets
 - **Trend Following** — in trending (high ADX) markets
 
-The core motivation comes from Bryan Chen’s 2021 LinkedIn article ["Algorithmic Trading: Mean Reversion using Python"](https://www.linkedin.com/pulse/algorithmic-trading-mean-reversion-using-python-bryan-chen/):
+The core motivation draws from a 2021 LinkedIn article exploring a simple Bollinger Bands + RSI mean-reversion strategy in Python. The author concluded:
 
 > “This mean reversion strategy has the potential to deliver consistent returns in range-bound and volatile environments. However, it might not be the best strategy to implement in trending markets. It is also highly vulnerable to a stock market crash.”
 
-Chen observed that his Bollinger Band + RSI mean-reversion system performed well in sideways markets but generated **no buy signals during strong uptrends** (e.g., Apr–Nov 2020) and risked large losses in crashes by attempting to catch falling knives. He suggested combining mean reversion with trend following as a logical next step.
+They highlighted that pure mean-reversion performs well in sideways markets but can miss extended trends (generating few/no signals) and suffer large losses during sharp reversals or crashes. As a natural extension, they suggested blending mean reversion with trend-following to create a more adaptive system.
 
-This project applies that suggestion by using ADX(14) to separate the regimes and route signals accordingly.
+This project implements that idea using **ADX(14)** to detect regimes and route signals:
+
+- Low ADX (≤ 25) → mean-reversion logic (buy oversold dips expecting reversion)  
+- High ADX (> 25) → trend-following logic (enter on momentum with volume confirmation and ride with trailing ATR stop)  
+
+The hybrid aims to capture opportunities across more market conditions while reducing exposure to regime-specific pitfalls of standalone mean-reversion.
 
 ---
 
